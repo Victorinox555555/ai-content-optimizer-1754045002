@@ -1,0 +1,117 @@
+/* Dynamic Theme Styles for Default Category */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Theme-specific color variables */
+:root {
+    --primary-50: #eef2ff;
+    --primary-500: #6366f1;
+    --primary-600: #4f46e5;
+    --accent-500: #64748b;
+}
+
+/* Premium glassmorphism effects */
+.glass {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+/* Theme-aware buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #64748b 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Theme-specific hover effects */
+.hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Custom scrollbar with theme colors */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eef2ff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6366f1 0%, #64748b 100%);
+    border-radius: 4px;
+}
+
+/* Form styles with theme colors */
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #c7d2fe;
+    border-radius: 0.75rem;
+    color: #4338ca;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px #e0e7ff;
+}
+
+/* Premium card styles */
+.premium-card {
+    backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #c7d2fe;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.5s ease;
+}
+
+.premium-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Theme-specific shadows */
+.shadow-theme {
+    box-shadow: 0 25px 50px -12px #6366f120;
+}
+
+.shadow-theme-lg {
+    box-shadow: 0 35px 60px -12px #6366f130;
+}

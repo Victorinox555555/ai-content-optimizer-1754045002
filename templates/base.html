@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Enterprise Revenue Intelligence Pro{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        },
+                        'accent': {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        glow: {
+                            '0%': { 'box-shadow': '0 0 20px #6366f150' },
+                            '100%': { 'box-shadow': '0 0 30px #6366f180' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="font-inter bg-gradient-to-br from-slate-50 via-white to-indigo-50 min-h-screen">
+    <!-- Animated background with theme colors -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -inset-10 opacity-30">
+            <div class="absolute top-0 -left-4 w-72 h-72 bg-primary-300 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
+            <div class="absolute top-0 -right-4 w-72 h-72 bg-accent-300 rounded-full mix-blend-multiply filter blur-xl animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl animate-float" style="animation-delay: 4s;"></div>
+        </div>
+    </div>
+
+    <!-- Navigation with theme colors -->
+    <nav class="relative z-50 backdrop-blur-xl bg-white/10 border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-accent-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-rocket text-white text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
+                            Enterprise Revenue Intelligence Pro
+                        </span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="/pricing" class="text-gray-700 hover:text-primary-600 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-primary-50">
+                        Pricing
+                    </a>
+                    <a href="/login" class="text-gray-700 hover:text-primary-600 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-primary-50">
+                        Login
+                    </a>
+                    <a href="/signup" class="bg-gradient-to-r from-primary-500 to-accent-500 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="relative z-10">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Premium footer with theme colors -->
+    <footer class="relative z-10 backdrop-blur-xl bg-black/20 border-t border-white/10 mt-32">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-rocket text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+                            Enterprise Revenue Intelligence Pro
+                        </span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed max-w-md">
+                        Revolutionary AI-powered revenue intelligence platform that transforms enterprise sales processes using advanced machine learning, predictive analytics, and autonomous optimization strategies to maximize revenue growth for Fortune 500 companies. - innovative business solutions
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-primary-600 font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">Features</a></li>
+                        <li><a href="/pricing" class="text-gray-600 hover:text-primary-600 transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-primary-600 font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">About</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">Privacy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600 transition-colors">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-primary-200 mt-12 pt-8 text-center">
+                <p class="text-gray-600 text-sm">
+                    &copy; 2025 Enterprise Revenue Intelligence Pro. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('session_id');
+            window.location.href = '/';
+        }
+        
+        document.body.addEventListener('htmx:configRequest', function(evt) {
+            const sessionId = localStorage.getItem('session_id');
+            if (sessionId) {
+                evt.detail.headers['Authorization'] = sessionId;
+            }
+        });
+    </script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
